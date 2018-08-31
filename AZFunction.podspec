@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AZFunction"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "AZFunction is help function"
 
   # This description is used to generate tags and improve search results.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-			aizen's help function.
+			AZFunction is aizen's help function.
                    DESC
 
   s.homepage     = "https://github.com/Aizen-Qing/AZFunction"
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://Aizen-Qing/AZFunction.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Aizen-Qing/AZFunction.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
