@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261DC896213D399600E22315 /* AZDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DC895213D399600E22315 /* AZDebug.swift */; };
 		264AF794213930E40023E4B8 /* AZDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AF793213930E40023E4B8 /* AZDirectory.swift */; };
 		2692375B213A3A9900E54084 /* AZRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692375A213A3A9900E54084 /* AZRouter.swift */; };
 		26923772213A4E5800E54084 /* AZFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26923771213A4E5800E54084 /* AZFunctionTests.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		261DC895213D399600E22315 /* AZDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZDebug.swift; sourceTree = "<group>"; };
 		264AF788213930810023E4B8 /* AZFunction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AZFunction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		264AF78C213930810023E4B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		264AF793213930E40023E4B8 /* AZDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZDirectory.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				264AF78C213930810023E4B8 /* Info.plist */,
 				264AF793213930E40023E4B8 /* AZDirectory.swift */,
 				2692375A213A3A9900E54084 /* AZRouter.swift */,
+				261DC895213D399600E22315 /* AZDebug.swift */,
 			);
 			path = AZFunction;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261DC896213D399600E22315 /* AZDebug.swift in Sources */,
 				264AF794213930E40023E4B8 /* AZDirectory.swift in Sources */,
 				2692375B213A3A9900E54084 /* AZRouter.swift in Sources */,
 			);

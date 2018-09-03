@@ -8,28 +8,33 @@
 
 import Foundation
 
+
 public class AZDirectory {
     
-    @discardableResult
+   
     //获取documentDirectory路径
+    @discardableResult
     public static func documentDirectory()->String{
         let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.userDomainMask,true).last! as String
         return documentPath
     }
     
     //获取documentDirectory路径
+    @discardableResult
     public static func libraryDirectory()->String{
         let libtraryPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last! as String
         return libtraryPath
     }
     
     //获取cachesDirectory路径
+    @discardableResult
     public static func cacheDirectory()->String{
         let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last! as String
         return cachePath
     }
     
     //获取tempDirectory路径
+    @discardableResult
     public static func tmpDirectory()->String{
         let tempPath = NSTemporaryDirectory() as String
         return tempPath
@@ -38,6 +43,7 @@ public class AZDirectory {
     
     
     //文件夹的检查
+    @discardableResult
     public static func isfileExists(path:String)->Bool{
         let  fileManager = FileManager.default
         let result = fileManager.fileExists(atPath: path)
@@ -46,6 +52,7 @@ public class AZDirectory {
     
     
     // 创建文件夹 存在返回true 不存在返回false
+    @discardableResult
     public static func creatDirectoryPath(path:String)->Bool{
         if path.isEmpty { return false }
         
@@ -68,6 +75,7 @@ public class AZDirectory {
     ///   - path: path
     ///   - name: 文件名称
     /// - Returns: 最终文件名称
+    @discardableResult
     public static func createDirectoryLegal(path:String, name:String, type:String)->Any?{
         if path.isEmpty || name.isEmpty { return nil }
         
@@ -83,6 +91,7 @@ public class AZDirectory {
     
     
     //创建文件
+    @discardableResult
     public static func creatFilePath(path:String, data:Data)->Bool{
         if path.isEmpty { return false }
         let  fileManager = FileManager.default
@@ -95,6 +104,7 @@ public class AZDirectory {
     }
     
     //创建文件
+    @discardableResult
     public static func creatFilePath(path:String, name:String, type:String, data:Data)->Any?{
         if path.isEmpty || name.isEmpty { return nil }
         let  fileManager = FileManager.default
@@ -106,6 +116,7 @@ public class AZDirectory {
 
   
     // 文件复制
+    @discardableResult
     public static func copyFile(scrPath:String, toPath:String)->Bool{
         let fileManager = FileManager.default
         do{
@@ -118,6 +129,7 @@ public class AZDirectory {
     
     
     //文件移动
+    @discardableResult
     public static func moveFile(scrPath:String, toPath:String)->Bool{
         let fileManager = FileManager.default
         do{
@@ -131,6 +143,7 @@ public class AZDirectory {
     
     
     //文件删除
+    @discardableResult
     public static func deleteFile(path:String)->Bool{
         let fileManager = FileManager.default
         do{
@@ -141,6 +154,14 @@ public class AZDirectory {
         }
     }
 
+    //遍历文件目录
+    public static func allDirectory(path:String)->[String]{
+        let fileManager = FileManager.default
+        let itemArr = try? fileManager.subpathsOfDirectory(atPath: path)
+        return itemArr!
+    }
+    
+    //
     
     
     //MARK:- 私有文件
