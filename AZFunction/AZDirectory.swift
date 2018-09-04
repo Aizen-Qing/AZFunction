@@ -42,9 +42,10 @@ public class AZDirectory {
     
     
     
-    //文件夹的检查
+    //文件的检查
     @discardableResult
     public static func isfileExists(path:String)->Bool{
+        if path.isEmpty { return false }
         let  fileManager = FileManager.default
         let result = fileManager.fileExists(atPath: path)
         return result;
@@ -118,6 +119,7 @@ public class AZDirectory {
     // 文件复制
     @discardableResult
     public static func copyFile(scrPath:String, toPath:String)->Bool{
+        if scrPath.isEmpty || toPath.isEmpty { return false }
         let fileManager = FileManager.default
         do{
             try fileManager.copyItem(atPath: scrPath, toPath: toPath)
@@ -131,6 +133,7 @@ public class AZDirectory {
     //文件移动
     @discardableResult
     public static func moveFile(scrPath:String, toPath:String)->Bool{
+        if scrPath.isEmpty || toPath.isEmpty { return false }
         let fileManager = FileManager.default
         do{
             try fileManager.moveItem(atPath: scrPath, toPath: toPath)
@@ -145,6 +148,7 @@ public class AZDirectory {
     //文件删除
     @discardableResult
     public static func deleteFile(path:String)->Bool{
+        if path.isEmpty { return false }
         let fileManager = FileManager.default
         do{
             try fileManager.removeItem(atPath: path)
@@ -161,7 +165,14 @@ public class AZDirectory {
         return itemArr!
     }
     
-    //
+    //判断是文件还是文件夹
+    public static func isDirectory(path:String)->Bool{
+        if path.isEmpty { return false }
+        let fileManager = FileManager.default
+        var isDirectory : ObjCBool = false
+        fileManager.fileExists(atPath: path, isDirectory: &isDirectory)
+        return isDirectory.boolValue
+    }
     
     
     //MARK:- 私有文件

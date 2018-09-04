@@ -8,7 +8,8 @@
 
 import Foundation
 
-public func print_debug<T>(message:T, fileName:String = #file, methodName:String = #function, lineNumber:Int = #line){
+// debug 
+public func print_debug<T>(_ message:T, fileName:String = #file, methodName:String = #function, lineNumber:Int = #line){
     #if DEBUG
     let fileStr : String = (fileName as NSString).pathComponents.last!.replacingOccurrences(of: "swift", with: "")
     print("\(fileStr)\(methodName)[\(lineNumber)]:\(message)")
