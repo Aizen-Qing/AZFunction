@@ -151,11 +151,11 @@ public class AZDirectory {
         if scrPath.isEmpty || toPath.isEmpty { return false }
         let fileManager = FileManager.default
         var path : String
-        
-        let urlPath = URL.init(string: toPath)
-        var fileName = urlPath?.lastPathComponent
-        
+    
         if self.isfileExists(path: toPath) {
+            let encodePath = toPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let urlPath = URL.init(string: encodePath!)
+            var fileName = urlPath?.lastPathComponent
             var type = Optional<Any>.none
             if !self.isDirectory(path: toPath){
                 let arr = fileName?.components(separatedBy: ".")
