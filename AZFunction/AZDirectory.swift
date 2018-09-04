@@ -82,6 +82,7 @@ public class AZDirectory {
         
         let  fileManager = FileManager.default
         let filePath = self._legalFile(path: path, name: name, type: type, index: 0)
+        if filePath == nil { return nil }
         do{
             try fileManager.createDirectory(atPath: filePath as! String, withIntermediateDirectories: true, attributes: nil)
             return filePath
@@ -106,7 +107,7 @@ public class AZDirectory {
     
     //创建文件
     @discardableResult
-    public static func creatFilePath(path:String, name:String, type:String, data:Data)->Any?{
+    public static func creatFilePathLegal(path:String, name:String, type:String, data:Data)->Any?{
         if path.isEmpty || name.isEmpty { return nil }
         let  fileManager = FileManager.default
         let filePath = self._legalFile(path: path, name: name, type: type, index: 0)
@@ -140,6 +141,42 @@ public class AZDirectory {
             return true
         } catch{
             return false
+        }
+    }
+    
+    // legal 文件移动
+    @discardableResult
+    public static func moveFileLegal(scrPath:String, toPath:String)->Any?{
+        
+        if scrPath.isEmpty || toPath.isEmpty { return false }
+        let fileManager = FileManager.default
+        var path : String
+        
+        let urlPath = URL.init(string: toPath)
+        var fileName = urlPath?.lastPathComponent
+        
+        if self.isfileExists(path: toPath) {
+            var type = Optional<Any>.none
+            if !self.isDirectory(path: toPath){
+                let arr = fileName?.components(separatedBy: ".")
+                if (arr?.count)!>1{
+                    type = arr?.last
+                    let str : String = fileName!
+                    fileName = (fileName! as NSString).substring(with: NSMakeRange(0, str.count-(type as! String).count-1))
+                }
+            }
+            let tmpPath = self._legalFile(path: toPath, name: fileName!, type: type as! String, index: 0)
+            if tmpPath == nil { return nil }
+            else { path = tmpPath as! String }
+        }else{
+            path = toPath
+        }
+        
+        do{
+            try fileManager.moveItem(atPath: scrPath, toPath: path)
+            return toPath
+        } catch{
+            return nil
         }
     }
     
@@ -190,7 +227,7 @@ public class AZDirectory {
         
         var indexStr = ""
         if index != 0 { indexStr = "-"+String(index) }
-        let filePath = path + name + indexStr + type
+        let filePath = path + name + indexStr + "." + type
         if self.isfileExists(path: filePath) {
             let tIndex = index+1
             return self._legalFile(path:path, name:name, type:type, index:tIndex)
