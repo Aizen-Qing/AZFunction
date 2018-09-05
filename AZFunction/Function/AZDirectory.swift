@@ -97,7 +97,7 @@ public class AZDirectory {
     public static func creatFilePath(path:String, data:Data)->Bool{
         if path.isEmpty { return false }
         let  fileManager = FileManager.default
-        if self.isfileExists(path: path) {
+        if !self.isfileExists(path: path) {
             fileManager.createFile(atPath: path, contents: data, attributes: nil)
             return true
         }else{

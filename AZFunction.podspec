@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AZFunction"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "AZFunction is help function"
   s.description  = <<-DESC
 			AZFunction is aizen's help function.
