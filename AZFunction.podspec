@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AZFunction"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "AZFunction is help function"
   s.description  = <<-DESC
 			AZFunction is aizen's help function.
@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.author             = { "Aizen" => "845283394@qq.com" }
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/Aizen-Qing/AZFunction.git", :tag => "#{s.version}" }
-  s.source_files  = "AZFunction"
+  s.source_files  = "AZFunction/**/*.swift"
 
 end
