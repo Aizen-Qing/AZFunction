@@ -202,6 +202,13 @@ public class AZDirectory {
         return itemArr!
     }
     
+    //遍历当前文件夹下的目录
+    public static func contentDirectory(path:String)->[String]{
+        let fileManager = FileManager.default
+        let itemArr = try? fileManager.contentsOfDirectory(atPath: path)
+        return itemArr!
+    }
+    
     //判断是文件还是文件夹
     public static func isDirectory(path:String)->Bool{
         if path.isEmpty { return false }
