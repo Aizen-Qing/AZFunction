@@ -16,7 +16,7 @@ public class AZRouter {
         
         guard let target: AnyObject  = NSClassFromString(spaceName+"."+targetName) else {return nil}
         
-        if (actionName?.isEmpty)!{//无方法时操作
+        if actionName == nil {//无方法时操作
             
             guard let clsType = target as? NSObject.Type else {return nil}
             let obj = clsType.init()
@@ -26,11 +26,7 @@ public class AZRouter {
             
             let action = NSSelectorFromString(actionName!)
             if target.responds(to: action) {//调用方法为@objc类方法
-                if parameters == nil {
-                    return target.perform(action).takeUnretainedValue()
-                } else {
-                    return target.perform(action, with:parameters!).takeUnretainedValue()
-                }
+                return target.perform(action, with:parameters).takeUnretainedValue()
             }  else {
                 return nil
             }
