@@ -12,11 +12,11 @@ import UIKit
 public class AZRouter {
     
     @discardableResult
-    public static func perform(spaceName:String, targetName: String, actionName: String, parameters: [String: Any]? = nil) -> Any? {
+    public static func perform(spaceName:String, targetName: String, actionName: String? = nil, parameters: [String: Any]? = nil) -> Any? {
         
         guard let target: AnyObject  = NSClassFromString(spaceName+"."+targetName) else {return nil}
         
-        if actionName.isEmpty{//无方法时操作
+        if (actionName?.isEmpty)!{//无方法时操作
             
             guard let clsType = target as? NSObject.Type else {return nil}
             let obj = clsType.init()
@@ -24,7 +24,7 @@ public class AZRouter {
             
         }else{
             
-            let action = NSSelectorFromString(actionName)
+            let action = NSSelectorFromString(actionName!)
             if target.responds(to: action) {//调用方法为@objc类方法
                 if parameters == nil {
                     return target.perform(action).takeUnretainedValue()
